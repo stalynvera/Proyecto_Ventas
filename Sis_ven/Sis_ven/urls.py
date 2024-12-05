@@ -16,19 +16,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from ventasapp.views import ClientesViewSet, ProductosViewSet, EmpleadosViewSet, EmpresasViewSet, ProveedoresViewSet, FacturaViewSet
+from ventasapp.views import ClientesViewSet, ProductosViewSet, EmpleadosViewSet, EmpresasViewSet, ProveedoresViewSet, FacturaViewSet,MetodoPagoViewSet, DescuentoViewSet, VentaViewSet,DetalleVentaViewSet,EnvioViewSet,PagoViewSet
 from rest_framework.routers import DefaultRouter
 
+# Crear el router y registrar los ViewSets
 rutas = DefaultRouter()
-rutas.register('Clientes', ClientesViewSet)
+rutas.register('Empresas', EmpresasViewSet)
+rutas.register('Proveedores', ProveedoresViewSet)
 rutas.register('Productos', ProductosViewSet)
 rutas.register('Empleados', EmpleadosViewSet)
-rutas.register('Empresas', EmpresasViewSet)
+rutas.register('Clientes', ClientesViewSet)
+rutas.register('Descuento', DescuentoViewSet)
+rutas.register('Venta', VentaViewSet)
+rutas.register('DetalleVenta', DetalleVentaViewSet)
 rutas.register('Factura', FacturaViewSet)
-rutas.register('Proveedores', ProveedoresViewSet)
+rutas.register('MetodoPago', MetodoPagoViewSet)
+rutas.register('Pago', PagoViewSet)
+rutas.register('Envio', EnvioViewSet)
 
-
+# Rutas de la API
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(rutas.urls)),
+    path('api/', include(rutas.urls)),  # Incluir las rutas de la API
 ]
+
